@@ -1,0 +1,10 @@
+^C:\USERS\RIMLAB\DESKTOP\RIPANIGRAZIANO\IOU\IOU-MASTER\BUILD\CMAKEFILES\010F31C04741788C00779029AF0D1040\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/RIMLab/Desktop/RipaniGraziano/IOU/IOU-master -BC:/Users/RIMLab/Desktop/RipaniGraziano/IOU/IOU-master/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/RIMLab/Desktop/RipaniGraziano/IOU/IOU-master/build/IntersectionOverUnion.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
