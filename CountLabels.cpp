@@ -4,26 +4,35 @@
 #include <pcl/point_types.h>
 #include <pcl/io/pcd_io.h>
 
-#define LABELS_NUM 9
+//#define USE_CURVATURE // comment to use label
 
-typedef pcl::PointCloud<pcl::PointXYZRGBNormal> PointXYZRGBNormalCloud;
+#ifdef USE_CURVATURE
+typedef pcl::PointCloud<pcl::PointXYZRGBNormal> PointCloud;
+#else
+typedef pcl::PointCloud<pcl::PointXYZRGBL> PointCloud;
+#endif
+
 
 int main(int argc, char* argv[])
 {
+    const int LABELS_NUM = 9;
+
     if(argc != 2) {
-        std::cout << "Usage: " << argv[0] << " FILE1" << std::endl;
+        std::cout << "Usage: " << argv[0] << " PCD_FILE" << std::endl;
         return -1;
     }
 
-    PointXYZRGBNormalCloud pc;
+    PointCloud pc;
     pcl::io::loadPCDFile(std::string(argv[1]), pc);
-
     std::cout << "Points: " << pc.size() << std::endl;
 
     int labels_count[LABELS_NUM] = {0};
-
     for (int i = 0; i < pc.size(); i++) {
+#ifdef USE_CURVATURE
         int label = pc[i].curvature;
+#else
+        int label = pc[i].label;
+#endif
         labels_count[label]++;
     }
 

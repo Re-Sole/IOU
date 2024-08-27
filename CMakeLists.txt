@@ -12,5 +12,5 @@ target_link_libraries(IntersectionOverUnion ${PCL_LIBRARIES})
 add_executable(CountLabels CountLabels.cpp)
 target_link_libraries(CountLabels ${PCL_LIBRARIES})
 
-add_executable(Relabel Relabel.cpp)
-target_link_libraries(Relabel ${PCL_LIBRARIES})
+add_executable(RemoveBackgroundLabel Relabel.cpp)
+target_link_libraries(RemoveBackgroundLabel ${PCL_LIBRARIES})
